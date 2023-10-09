@@ -21,15 +21,15 @@ pipeline {
         }
       }
     }
-    
-  }
-    stage('Gmail') {
-        steps {
+ 
+    stage('Gmail'){
+        steps{
             emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER} || More information at: ${env.BUILD_URL}",
                 subject: 'Declarative Pipeline Build Status',
                 to: 'manjushreegs15@gmail.com'
         }
     }
+}
 
 post{
       always{
